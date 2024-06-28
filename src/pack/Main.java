@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[]Args) {
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Command Line Interface is about to be launched, do you want to launch the Graphic Inteface instead?");
+		System.out.println("Command Line Interface is about to be launched, do you want to launch the Graphic Interface instead?");
 		String answer = "NONE";
 		
 		while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) {
@@ -23,7 +23,8 @@ public class Main {
 		
 		//command line block
 		if (answer.equalsIgnoreCase("no")) {
-			System.out.println("Command Line");
+			CommandLineInterface interfaccia = new CommandLineInterface();
+			interfaccia.executeInterface();
 		}
 		
 	}
