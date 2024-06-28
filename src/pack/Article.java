@@ -2,6 +2,7 @@ package pack;
 
 public class Article {
 	
+	//attributi
 	private String name;
 	private double cost;
 	private String cathegory;

@@ -16,7 +16,7 @@ public class Main {
 		}
 		scan.close();
 		
-		// GUI block
+		//GUI block
 		if (answer.equalsIgnoreCase("yes")) {
 			System.out.println("Graphic");
 		}

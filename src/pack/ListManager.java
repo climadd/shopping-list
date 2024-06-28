@@ -4,7 +4,14 @@ import java.util.ArrayList;
 
 public class ListManager {
 
-	private ArrayList<ShoppingList> manager = new ArrayList<>();
+	//attributi
+	private ArrayList<ShoppingList> manager;
+	
+	//costruttore
+	public ListManager(){
+		this.manager = new ArrayList<ShoppingList>();
+	}
+	//metodi
 	
 }
 	

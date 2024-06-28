@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class ShoppingList {
 	
+	//attributi
 	private String name;
-	private ArrayList<Article> articles = new ArrayList<>();
+	private ArrayList<Article> articles;
 	
 	//costruttore
 	public ShoppingList(String name) {
@@ -13,6 +14,11 @@ public class ShoppingList {
 		this.articles = new ArrayList<Article>();
 	}
 	
-	//aggiungi article
-	
+	//metodi
+	public void addArticle(Article article) {
+		articles.add(article);
+	}
+	public void removeArticle(Article article) {
+		articles.remove(article);
+	}
 }
