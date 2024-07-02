@@ -14,7 +14,7 @@ public class Main {
 			System.out.println("Type a valid response (yes/no): ");
 			answer = scan.next();
 		}
-		scan.close();
+		
 		
 		//GUI block
 		if (answer.equalsIgnoreCase("yes")) {
@@ -23,9 +23,10 @@ public class Main {
 		
 		//command line block
 		if (answer.equalsIgnoreCase("no")) {
-			CommandLineInterface interfaccia = new CommandLineInterface();
+			CommandLineInterface interfaccia = new CommandLineInterface(scan);
 			interfaccia.executeInterface();
 		}
 		
+		scan.close();
 	}
 }

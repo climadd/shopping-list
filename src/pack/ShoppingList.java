@@ -19,6 +19,24 @@ public class ShoppingList {
 		articles.add(article);
 	}
 	public void removeArticle(Article article) {
+		//scorrere la lista?
 		articles.remove(article);
+	}
+	public ArrayList<Article> findByPrefix(String prefix) {
+			ArrayList<Article> answ = new ArrayList<>();
+			for(Article next: articles) 
+				if(next.toString().startsWith(prefix))
+					answ.add(next);
+			return answ;		
+	}
+
+	public double priceOfList() {
+		
+		return 0;
+	}
+	public ArrayList<Article> articlesIndex() {
+		ArrayList<Article> answ = new ArrayList<>();
+		//computaz
+		return answ;
 	}
 }
