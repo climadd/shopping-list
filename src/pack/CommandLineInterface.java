@@ -20,7 +20,16 @@ public class CommandLineInterface {
 		int operation;
 		
 		while(true) {
-
+			/*
+			 * -Add new List
+			 * -Remove existing List
+			 * -Add new Cathegory
+			 * -Remove existing Cathegory
+			 * -Add new Article
+			 * -Remove existing Article
+			 * 
+			 * -Exit
+			 */
 			System.out.println("Which operation do you want to perform?\nType the corresponding number:");
 			System.out.println("  1. Add new List");
 			System.out.println("  2. Remove existing List");

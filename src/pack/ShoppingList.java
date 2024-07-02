@@ -16,7 +16,12 @@ public class ShoppingList {
 	
 	//metodi
 	public void addArticle(Article article) {
-		articles.add(article);
+		articles.add(article);	
+		
+		/* 	public void addArticle(String name, double cost) {
+		Article entry = new Article(name,cost);
+		articles.add(entry);
+		*/
 	}
 	public void removeArticle(Article article) {
 		//scorrere la lista?
@@ -31,8 +36,9 @@ public class ShoppingList {
 	}
 
 	public double priceOfList() {
+		double price = 0;
 		
-		return 0;
+		return price;
 	}
 	public ArrayList<Article> findByCathegory() {
 		ArrayList<Article> answ = new ArrayList<>();
