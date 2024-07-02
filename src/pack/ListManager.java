@@ -14,16 +14,16 @@ public class ListManager {
 		this.cathegories = new ArrayList<String>();
 	}
 	//metodi
-	public void addShoppingList(String name) {
+	public void addShoppingList(ShoppingList name) {
 		
 	}
-	public void removeShoppingList(String name) {
+	public void removeShoppingList(ShoppingList name) {
 		
 	}
 	public void addCathegory(String cathegory) {
 		
 	}
-	public void deleteCathegory(String cathegory) {
+	public void removeCathegory(String cathegory) {
 		//gli articoli di tale categoria vanno settati a NONE
 	}
 	

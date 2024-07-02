@@ -34,7 +34,7 @@ public class ShoppingList {
 		
 		return 0;
 	}
-	public ArrayList<Article> articlesIndex() {
+	public ArrayList<Article> findByCathegory() {
 		ArrayList<Article> answ = new ArrayList<>();
 		//computaz
 		return answ;
