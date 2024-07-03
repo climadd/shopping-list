@@ -8,6 +8,7 @@ public class ShoppingList {
 	private String name;
 	private ArrayList<Article> articles;
 	
+	
 	//costruttore
 	public ShoppingList(String name) {
 		this.name = name;
@@ -15,13 +16,19 @@ public class ShoppingList {
 	}
 	
 	//metodi
-	public void addArticle(Article article) {
-		articles.add(article);	
-		
-		/* 	public void addArticle(String name, double cost) {
-		Article entry = new Article(name,cost);
+	public void addArticle(String name, double cost, String cathegory, Integer quantity) {
+		Article entry;
+		//uso la classe wrapper per int -> Integer.. valuta la correttezza logica del auto boxing/unboxing
+		if (cathegory != null && quantity != null) {
+			entry = new Article(name, cost, cathegory, quantity);
+		} else if (cathegory != null) {
+			entry = new Article(name, cost, cathegory);
+		} else if (quantity != null) {
+			entry = new Article(name, cost, quantity);
+		} else {
+			entry = new Article(name, cost);
+		}
 		articles.add(entry);
-		*/
 	}
 	public void removeArticle(Article article) {
 		//scorrere la lista?
