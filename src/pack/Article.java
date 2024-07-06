@@ -24,7 +24,7 @@ public class Article {
 	public Article(String name, double cost, int quantity) {
 		this(name,  cost, "NONE", quantity);
 	}
-	
+    
 	//getter
 	public String getName(){
 		return name;
@@ -38,5 +38,8 @@ public class Article {
 	public int getQuantity(){
 		return quantity;
 		}
-	
+	//setter
+	public void setCaregory(String string) {
+		this.category = string;
+	}
 }

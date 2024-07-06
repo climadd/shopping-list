@@ -8,7 +8,7 @@ public class Main {
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Command Line Interface is about to be launched, do you want to launch the Graphic Interface instead?");
-		String answer = "NONE";
+		String answer = "None";
 		
 		while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) {
 			System.out.println("Type a valid response (yes/no): ");

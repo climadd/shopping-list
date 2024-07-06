@@ -7,7 +7,6 @@ public class ShoppingList {
 	//attributi
 	private String name;
 	private ArrayList<Article> articles;
-	//attributo extra: private int lenght = 0;
 	
 	//costruttore
 	public ShoppingList(String name) {
@@ -18,7 +17,6 @@ public class ShoppingList {
 	//metodi
 	public void addArticle(String name, double cost, String category, Integer quantity) {
 		Article entry;
-		//uso la classe wrapper per int -> Integer.. valuta la correttezza logica del auto boxing/unboxing
 		if (category != null && quantity != null) {
 			entry = new Article(name, cost, category, quantity);
 		} else if (category != null) {
@@ -47,7 +45,9 @@ public class ShoppingList {
 	
 	public double priceOfList() {
 		double price = 0;
-		//scorri lista e fai sommatoria
+        for (Article article : articles) {
+            price += article.getCost() * article.getQuantity();
+        }
 		return price;
 	}
 	
@@ -55,5 +55,13 @@ public class ShoppingList {
 		ArrayList<Article> answ = new ArrayList<>();
 		//computaz
 		return answ;
+	}
+	
+	//getters
+	public String getName() {
+		return name;
+	}
+	public ArrayList<Article> getArticles(){
+		return articles;
 	}
 }

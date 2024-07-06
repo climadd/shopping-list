@@ -7,6 +7,7 @@ public class ListManager {
 	//attributi
 	private ArrayList<ShoppingList> manager;
 	private ArrayList<String> categories;
+	//attributo extra: private int lenght = 0;
 	
 	//costruttore
 	public ListManager(){
@@ -15,11 +16,14 @@ public class ListManager {
 	}
 	
 	//metodi
-	public void displayLists() {
-		//utilizzo un ciclo in cui ricavo i dati attraverso i getter e li stampo tutti?
-		System.out.println("Mostrando le Liste presenti in memoria...\n" + manager.toString());
+	public void displayLists(ListManager manager) {
+
 	}
 	
+	public void displayCategories(ListManager manager) {
+		System.out.println(manager.getCategories());	
+	} 
+	       
 	public void addShoppingList(String name) {
 		ShoppingList entry = new ShoppingList(name);
 		manager.add(entry);	
@@ -35,10 +39,14 @@ public class ListManager {
 	}
 	
 	public void removeCategory(String category) {
-		//gli articoli di tale categoria vanno settati a NONE
 		
-		//confronto stringa con nomi categorie, ciclando elimina
+		//gli articoli in ogni lista di tale categoria vanno settati a NONE
+		categories.remove(category);
+		
 	}
-	
+	//getters
+	public ArrayList<String> getCategories(){
+		return categories;
+	}
 }
 	
