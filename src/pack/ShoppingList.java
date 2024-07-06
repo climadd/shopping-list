@@ -55,14 +55,14 @@ public class ShoppingList {
 			Article article = iterator.next();
 			if(article.getName().equalsIgnoreCase(name)) {
 				articleMatch = true;
-				article.removeQuantity(quantity);
+				article.subtractQuantity(quantity);
 				if(article.getQuantity()<1) {
 					iterator.remove();
 				}
 			}
 		}	
 	}
-	//TODO: usare iterator opzionale
+
 	public ArrayList<Article> findByPrefix(String prefix) {
 		ArrayList<Article> answ = new ArrayList<>();
 		for(Article next: articles) 
@@ -70,7 +70,7 @@ public class ShoppingList {
 				answ.add(next);
 		return answ;		
 	}
-	//TODO: usare iterator opzionale
+
 	public double priceOfList() {
 		double price = 0;
 		for (Article article : articles) {
@@ -78,17 +78,31 @@ public class ShoppingList {
 		}
 		return price;
 	}
-
-	//chiedo se posso usare lo stream
-	public ArrayList<Article> findByCategory() {
-		ArrayList<Article> answ = new ArrayList<>();
-		//computaz
-		return answ;
+	//TODO: finire
+	public ArrayList<Article> findByCategory(String category) {
+		Iterator<Article> iterator = articles.iterator();
+		boolean firstMatch = true;
+		while(iterator.hasNext()){
+			Article article = iterator.next();
+			if(article.getCategory().equalsIgnoreCase(category) && firstMatch) {
+				firstMatch = false;
+				ArrayList<Article> answ = new ArrayList<>();
+				answ.add(article);
+			}
+			else if(article.getCategory().equalsIgnoreCase(category) && !firstMatch) {
+				//answ.add(article);
+			}
+		}
+		throw new RuntimeException("TODO: da risolvere");
 	}
 	//TODO: iterator
 	public void setDefaultCategory(String removedCategory) {
-
+		Iterator<Article> iterator = articles.iterator();
+		while(iterator.hasNext()) {
+			
+		}
 	}
+	
 	//getters
 	public String getName() {
 		return name;

@@ -45,7 +45,7 @@ public class CommandLineInterface {
 			System.out.println("  7. Remove existing Article");
 			System.out.println("  8. Find Article by Category");
 			System.out.println("  9. Calculate the total price of a List");
-			System.out.println("  10. Exit");
+			System.out.println(" 10. Exit");
 			operation= scan.nextInt();
 
 			switch (operation) {

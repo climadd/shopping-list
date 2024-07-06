@@ -33,13 +33,13 @@ public class Article {
 		}
 		this.quantity += amount;
 	}
-	public void removeQuantity(int amount) throws ValidationException{
+	public void subtractQuantity(int amount) throws ValidationException{
 		if(amount<0) {
 			throw new ValidationException("Amount must be a positive number!");
 		}
 		this.quantity -= amount;
 	}
-
+	
 	//getter
 	public String getName(){
 		return name;
