@@ -11,6 +11,9 @@ public class Article {
 
 	//costruttori
 	public Article(String name, double cost, String category, int quantity) {
+		if(quantity<1) {
+			//TODO: inserisci nuova eccezione
+		}
 		this.name = name;
 		this.cost = cost;
 		this.category = category;
@@ -33,6 +36,7 @@ public class Article {
 		}
 		this.quantity += amount;
 	}
+	
 	public void subtractQuantity(int amount) throws ValidationException{
 		if(amount<0) {
 			throw new ValidationException("Amount must be a positive number!");
@@ -56,6 +60,9 @@ public class Article {
 	//setter
 	public void setCategory(String string) {
 		this.category = string;
+	}
+	public void setDefaultCategory() {
+		this.category = DEFAULT_CATEGORY;
 	}
 
 }

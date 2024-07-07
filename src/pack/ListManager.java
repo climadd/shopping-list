@@ -6,18 +6,18 @@ import java.util.Iterator;
 public class ListManager {
 
 	//attributi
-	private ArrayList<ShoppingList> manager;
+	private ArrayList<ShoppingList> collectionOfShoppingLists;
 	private ArrayList<String> categories;
 
 	//costruttore
 	public ListManager(){
-		this.manager = new ArrayList<ShoppingList>();
+		this.collectionOfShoppingLists = new ArrayList<ShoppingList>();
 		this.categories = new ArrayList<String>();
 	}
 
 	//metodi
 	public void displayLists() {
-		for (ShoppingList shoppingList : manager) {
+		for (ShoppingList shoppingList : collectionOfShoppingLists) {
 			System.out.print(shoppingList.getName() + " : ");
 			ArrayList<Article> articles = shoppingList.getArticles();
 			for (int i = 0; i < articles.size(); i++) {
@@ -36,36 +36,66 @@ public class ListManager {
 	} 
 
 	public void addShoppingList(String name) throws DuplicateShoppingListException {
-		Iterator<ShoppingList> iterator = manager.iterator();	
+		Iterator<ShoppingList> iterator = collectionOfShoppingLists.iterator();	
 		while(iterator.hasNext()) {
 			if(iterator.next().getName().equalsIgnoreCase(name)) {
 				throw new DuplicateShoppingListException("Shopping List with name " + name + " already present");
 			}					
 		}
 		ShoppingList entry = new ShoppingList(name);
-		manager.add(entry);	
+		collectionOfShoppingLists.add(entry);	
 	}
-	//TODO: solito
+	
 	public void removeShoppingList(String name) {
-		//devo scendere di un livello, name sta in shoppingList
-		//		if(manager.getName().equals(name)) {}
-
-
-		manager.remove(name);
+		Iterator<ShoppingList> iterator = collectionOfShoppingLists.iterator();
+		boolean matchFound = false;
+		while(iterator.hasNext() && !matchFound) {
+			if(iterator.next().getName().equalsIgnoreCase(name)) {
+				matchFound = true;
+				iterator.remove();
+			}
+		}
 	}
-	//TODO: controllo nome duplicato
-	public void addCategory(String category) {
+	
+	public void addCategory(String category) throws DuplicateShoppingListException {
+		Iterator<String> iterator = categories.iterator();	
+		while(iterator.hasNext()) {
+			if(iterator.next().equalsIgnoreCase(category)) {
+				throw new DuplicateShoppingListException("Category with name " + category + " already present");
+			}	
+		}
 		categories.add(category);
 	}
 
 	public void removeCategory(String category) {
+		Iterator<ShoppingList> iterator = collectionOfShoppingLists.iterator();
+		boolean matchFound = false;
+		while(iterator.hasNext() && !matchFound) {
+			if(iterator.next().getName().equalsIgnoreCase(category)) {
+				matchFound = true;
+				iterator.remove();
+			}
+		}
+	}
 
-		//gli articoli in ogni lista di tale categoria vanno settati a NONE
-		categories.remove(category);
+	public void setDefaultCategory(String removedCategory) {	
+		for (ShoppingList shoppingList : collectionOfShoppingLists) {
+			shoppingList.setDefaultCategory(removedCategory);
+		}
+
 	}
-	public void setDefaultCategory() {
-		//operazione su tutte le liste
+	
+	public boolean categoryPresenceCheck(String checkedCategory) {
+		boolean check = false;
+		for (int i=0; i < categories.size() && !check; i++) {
+			String category = categories.get(i);
+			if(category.equalsIgnoreCase(checkedCategory)) {
+				check=true;			
+			}
+		}
+		return check;
 	}
+	
 	//getters
 	public ArrayList<String> getCategories(){
 		return categories;

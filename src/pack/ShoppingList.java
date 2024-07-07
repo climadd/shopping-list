@@ -78,28 +78,26 @@ public class ShoppingList {
 		}
 		return price;
 	}
-	//TODO: finire
+	
 	public ArrayList<Article> findByCategory(String category) {
+		ArrayList<Article> articlesByCategory = new ArrayList<>();
 		Iterator<Article> iterator = articles.iterator();
-		boolean firstMatch = true;
 		while(iterator.hasNext()){
 			Article article = iterator.next();
-			if(article.getCategory().equalsIgnoreCase(category) && firstMatch) {
-				firstMatch = false;
-				ArrayList<Article> answ = new ArrayList<>();
-				answ.add(article);
-			}
-			else if(article.getCategory().equalsIgnoreCase(category) && !firstMatch) {
-				//answ.add(article);
+			if(article.getCategory().equalsIgnoreCase(category)) {			
+				articlesByCategory.add(article);
 			}
 		}
-		throw new RuntimeException("TODO: da risolvere");
+		return articlesByCategory;
 	}
-	//TODO: iterator
+	
 	public void setDefaultCategory(String removedCategory) {
 		Iterator<Article> iterator = articles.iterator();
 		while(iterator.hasNext()) {
-			
+			Article article = iterator.next();
+			if(article.getCategory().equalsIgnoreCase(removedCategory)) {
+				article.setDefaultCategory();
+			}
 		}
 	}
 	

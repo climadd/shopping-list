@@ -15,7 +15,7 @@ public class CommandLineInterface {
 	}
 
 	//metodo
-	public void executeInterface() {
+	public void executeInterface() throws DuplicateShoppingListException {
 		System.out.println("Launching Command Line Interface...\n");
 		int operation;
 
@@ -75,13 +75,24 @@ public class CommandLineInterface {
 				break;
 			case 4:
 				System.out.println("Type the name of the new Category: ");
+				try {
 				manager.addCategory(scan.next());
 				System.out.println("New Category successfully created!\n");
+				}catch(DuplicateShoppingListException dslException) {
+					System.out.println(dslException.getMessage() + "\n");
+				}
 				break;
 			case 5:
 				System.out.println("Type the name of the Category you're removing: ");
-				manager.removeCategory(scan.next());
-				System.out.println("Category successfully removed!\n");                
+				String userInput = scan.next();
+				if(manager.categoryPresenceCheck(userInput)) {
+					manager.removeCategory(userInput);
+					manager.setDefaultCategory(userInput);
+					System.out.println("Category successfully removed!\n"); 
+				}
+				else {
+					System.out.println("Category not found.\n");
+				}
 				break;
 			case 6:
 				String list;
@@ -90,7 +101,10 @@ public class CommandLineInterface {
 				System.out.println("Type a valid List to add the Article in: \n");
 				//                		list = scan.next();
 				//                	}
-				System.out.println("Type: Name of article*, Cost*, Category, Quantity \n(* fields are mandatory)");
+				System.out.println("Type the Name of the Article (mandatory field): ");
+				System.out.println("Type the Cost of the Article (mandatory field): ");
+				System.out.println("Type the Category of the Article: "); //stringa vuota = elemento nullo x costruttori
+				System.out.println("Type the Quantity of the Article: "); //stringa vuota = elemento nullo x costruttori
 
 				System.out.println("New Article successfully added!\n");
 				break;
@@ -98,6 +112,10 @@ public class CommandLineInterface {
 				System.out.println("Article successfully removed!\n");
 				break;
 			case 8:
+				break;
+			case 9:
+				break;
+			case 10:
 				System.out.println("Closing Interface...");
 				scan.close();
 				return;
