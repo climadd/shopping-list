@@ -35,9 +35,9 @@ public class ShoppingList {
 		}
 		if(!articleMatch) {
 			Article entry;
-			if (category != null && quantity != null) {
+			if (category != "" && quantity != null) {
 				entry = new Article(name, cost, category, quantity);
-			} else if (category != null) {
+			} else if (category != "") {
 				entry = new Article(name, cost, category);
 			} else if (quantity != null) {
 				entry = new Article(name, cost, quantity);
@@ -78,7 +78,7 @@ public class ShoppingList {
 		}
 		return price;
 	}
-	
+
 	public ArrayList<Article> findByCategory(String category) {
 		ArrayList<Article> articlesByCategory = new ArrayList<>();
 		Iterator<Article> iterator = articles.iterator();
@@ -89,7 +89,7 @@ public class ShoppingList {
 			}
 		}
 		return articlesByCategory;
-	}
+	}	
 	
 	public void setDefaultCategory(String removedCategory) {
 		Iterator<Article> iterator = articles.iterator();
