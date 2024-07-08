@@ -37,14 +37,14 @@ public class CommandLineInterface {
 			System.out.println("Which operation do you want to perform?\nType the corresponding number:");
 			System.out.println("  0. Display Lists and their Contents");	//fatto
 			System.out.println("  1. Display every Category");	//fatto
-			System.out.println("  2. Add new List");	//fatto
-			System.out.println("  3. Remove existing List");	//fatto
-			System.out.println("  4. Add new Category");	//fatto
-			System.out.println("  5. Remove existing Category");	//fatto ma non lancio eccezione, ho il metodo
-			System.out.println("  6. Add new Article");
-			System.out.println("  7. Remove existing Article");
-			System.out.println("  8. Find Article by Category");
-			System.out.println("  9. Calculate the total price of a List");
+			System.out.println("  2. Add new List");	//fatto e giusto
+			System.out.println("  3. Remove existing List");	//fatto ma sbaglia entra in eccezione
+			System.out.println("  4. Add new Category");	//fatto e giusto
+			System.out.println("  5. Remove existing Category");	//fatto ma non lancio eccezione, ho il metodo invece di eccezione
+			System.out.println("  6. Add new Article");		//
+			System.out.println("  7. Remove existing Article");		//
+			System.out.println("  8. Find Article by Category");	//
+			System.out.println("  9. Calculate the total price of a List");		//
 			System.out.println(" 10. Exit");
 			operation= scan.nextInt();
 
