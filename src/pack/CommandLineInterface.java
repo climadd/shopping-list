@@ -22,8 +22,7 @@ public class CommandLineInterface {
 		int operation;
 
 		while(true) {
-			/*
-			 * -Display contents
+			/* -Display contents
 			 * -display categories
 			 * -Add new List
 			 * -Remove existing List
@@ -46,7 +45,7 @@ public class CommandLineInterface {
 			System.out.println("  5. Remove existing Category");	//sbaglia entra in eccezione anche quando non dovrebbe
 			System.out.println("  6. Add new Article");		//gestisci il non categorizzato/valori default
 			System.out.println("  7. Remove existing Article");		//
-			System.out.println("  8. Find Article by List and Prefix");	//
+			System.out.println("  8. Find Article by List and Prefix");	//fatto
 			System.out.println("  9. Find Article by Category");	//
 			System.out.println(" 10. Calculate the total price of a List");		//fatto
 			System.out.println(" 11. Exit");
@@ -102,23 +101,22 @@ public class CommandLineInterface {
 				break;
 			case 6:
 				System.out.println("Type a valid List to add the Article in: \n");
-				if(true) {
-					String newArticleList = scan.next();
-					for(ShoppingList shoppingList : manager.getShoppingLists()) {
-						if(shoppingList.getName().equalsIgnoreCase(newArticleList)) {
-							System.out.println("Type the Name of the Article (mandatory field): ");
-							String newArticleName = scan.next();
-							System.out.println("Type the Cost of the Article (mandatory field): ");
-							double newArticleCost = scan.nextDouble();
-							System.out.println("Type the Category of the Article: "); //stringa vuota = elemento nullo x costruttori
-							String newArticleCategory = scan.next();
-							// TODO: controllo che la categoria sia presente
-							System.out.println("Type the Quantity of the Article: "); //stringa vuota = elemento nullo x costruttori
-							int newArticleQuantity = scan.nextInt();
-							shoppingList.addArticle(newArticleName, newArticleCost, newArticleCategory, newArticleQuantity);
-						}
-					}					
-				}//catch
+
+				String newArticleList = scan.next();
+				for(ShoppingList shoppingList : manager.getShoppingLists()) {
+					if(shoppingList.getName().equalsIgnoreCase(newArticleList)) {
+						System.out.println("Type the Name of the Article (mandatory field): ");
+						String newArticleName = scan.next();
+						System.out.println("Type the Cost of the Article (mandatory field): ");
+						double newArticleCost = scan.nextDouble();
+						System.out.println("Type the Category of the Article: "); //stringa vuota = elemento nullo x costruttori
+						String newArticleCategory = scan.next();
+						// TODO: controllo che la categoria sia presente
+						System.out.println("Type the Quantity of the Article: "); //stringa vuota = elemento nullo x costruttori
+						int newArticleQuantity = scan.nextInt();
+						shoppingList.addArticle(newArticleName, newArticleCost, newArticleCategory, newArticleQuantity);
+					}
+				}					
 
 				break;
 			case 7:
@@ -126,6 +124,18 @@ public class CommandLineInterface {
 				System.out.println("Article successfully removed!\n");
 				break;
 			case 8:
+				System.out.println("Type a valid List to find Articles in:");
+				
+				String listToFindPrefixIn = scan.next();
+				System.out.println("Type a prefix:");			
+				String prefix = scan.next();
+				for(ShoppingList shoppingList : manager.getShoppingLists()) {
+					if(shoppingList.getName().equalsIgnoreCase(listToFindPrefixIn)) {
+						ShoppingList resultsByPrefixList = new ShoppingList("Results by prefix",shoppingList.findByPrefix(prefix));
+						resultsByPrefixList.printList();
+						System.out.println();
+					}
+				}
 				break;
 			case 9:
 				// find article by category: make a new ShoppingList named answer where i add every matching article

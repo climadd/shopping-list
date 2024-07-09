@@ -11,17 +11,14 @@ public class ShoppingList implements Iterable{
 	private ArrayList<Article> articles;
 
 	//costruttore
-	public ShoppingList(String name) {
+	public ShoppingList(String name, ArrayList<Article> articles) {
 		this.name = name;
-		this.articles = new ArrayList<Article>();
+		this.articles = articles;
 	}
-	public ShoppingList importFromFile(File shoppingListFile) {
-		throw new RuntimeException("TODO da implementare");
+	public ShoppingList(String name) {
+		this(name, new ArrayList<Article>());
 	}
-	public void exportToFile(String shoppingListPath) {
-		throw new RuntimeException("TODO da implementare");
-	}
-
+	
 	//metodi
 	public void addArticle(String name, double cost, String category, Integer quantity) throws ValidationException {
 		Iterator<Article> iterator = articles.iterator();
@@ -77,7 +74,7 @@ public class ShoppingList implements Iterable{
 	public ArrayList<Article> findByPrefix(String prefix) {
 		ArrayList<Article> answ = new ArrayList<>();
 		for(Article next: articles) 
-			if(next.toString().startsWith(prefix))
+			if(next.getName().startsWith(prefix))
 				answ.add(next);
 		return answ;		
 	}
@@ -110,6 +107,13 @@ public class ShoppingList implements Iterable{
 				article.setDefaultCategory();
 			}
 		}
+	}
+	//metodi I/O
+	public ShoppingList importFromFile(File shoppingListFile) {
+		throw new RuntimeException("TODO da implementare");
+	}
+	public void exportToFile(String shoppingListPath) {
+		throw new RuntimeException("TODO da implementare");
 	}
 
 	//getters

@@ -16,21 +16,6 @@ public class ListManager {
 	}
 
 	//metodi
-	//	public void displayLists() {
-	//		for (ShoppingList shoppingList : collectionOfShoppingLists) {
-	//			System.out.print(shoppingList.getName() + " : ");
-	//			ArrayList<Article> articles = shoppingList.getArticles();
-	//			for (int i = 0; i < articles.size(); i++) {
-	//				Article current = articles.get(i);
-	//				System.out.print(current.getName() + " (" + current.getCost() + "€, " + current.getCategory() + ", n°" + current.getQuantity() + ")");
-	//				if (i < articles.size() - 1) {
-	//					System.out.print("/ ");
-	//				}
-	//			}
-	//			System.out.println();
-	//		}
-	//		System.out.println();
-	//	}
 	public void displayLists() {
 		for (ShoppingList shoppingList : collectionOfShoppingLists) {
 			shoppingList.printList();
