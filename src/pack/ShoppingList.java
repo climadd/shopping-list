@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ShoppingList {
+public class ShoppingList implements Iterable{
 
 	//attributi
 	private String name;
@@ -63,6 +63,10 @@ public class ShoppingList {
 		}	
 	}
 
+	public void printList() {
+		
+	}
+	
 	public ArrayList<Article> findByPrefix(String prefix) {
 		ArrayList<Article> answ = new ArrayList<>();
 		for(Article next: articles) 
@@ -107,5 +111,11 @@ public class ShoppingList {
 	}
 	public ArrayList<Article> getArticles(){
 		return articles;
+	}
+	
+	@Override
+	public Iterator iterator() {
+		// TODO Auto-generated method stub
+		return articles.iterator();
 	}
 }

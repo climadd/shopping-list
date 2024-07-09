@@ -5,7 +5,7 @@ import java.util.Scanner;
 //organizzaz directory SRC: main-java-pack<varie classi/test-java<varie classi
 public class Main {
 
-	public static void main(String[]Args) throws DuplicateNameException, MissingNameException {
+	public static void main(String[]Args) throws DuplicateNameException, MissingNameException, ValidationException {
 
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Command Line Interface is about to be launched, do you want to launch the Graphic Interface instead?");

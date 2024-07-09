@@ -21,9 +21,10 @@ public class ListManager {
 			System.out.print(shoppingList.getName() + " : ");
 			ArrayList<Article> articles = shoppingList.getArticles();
 			for (int i = 0; i < articles.size(); i++) {
-				System.out.print(articles.get(i));
+				Article current = articles.get(i);
+				System.out.print(current.getName() + " (" + current.getCost() + "€, " + current.getCategory() + ", n°" + current.getQuantity() + ")");
 				if (i < articles.size() - 1) {
-					System.out.print(", ");
+					System.out.print("/ ");
 				}
 			}
 			System.out.println();
@@ -114,6 +115,9 @@ public class ListManager {
 	}
 
 	//getters
+	public ArrayList<ShoppingList> getShoppingLists(){
+		return collectionOfShoppingLists;
+	}
 	public ArrayList<String> getCategories(){
 		return categories;
 	}
