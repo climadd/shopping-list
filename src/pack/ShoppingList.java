@@ -64,9 +64,16 @@ public class ShoppingList implements Iterable{
 	}
 
 	public void printList() {
-		
+		System.out.print(name + " : ");
+		for (int i = 0; i < articles.size(); i++) {
+			Article current = articles.get(i);
+			System.out.print(current.getName() + " (" + current.getCost() + "€, " + current.getCategory() + ", n°" + current.getQuantity() + ")");
+			if (i < articles.size() - 1) {
+				System.out.print("/ ");
+			}
+		}
 	}
-	
+
 	public ArrayList<Article> findByPrefix(String prefix) {
 		ArrayList<Article> answ = new ArrayList<>();
 		for(Article next: articles) 
@@ -94,7 +101,7 @@ public class ShoppingList implements Iterable{
 		}
 		return articlesByCategory;
 	}	
-	
+
 	public void setDefaultCategory(String removedCategory) {
 		Iterator<Article> iterator = articles.iterator();
 		while(iterator.hasNext()) {
@@ -104,7 +111,7 @@ public class ShoppingList implements Iterable{
 			}
 		}
 	}
-	
+
 	//getters
 	public String getName() {
 		return name;
@@ -112,7 +119,7 @@ public class ShoppingList implements Iterable{
 	public ArrayList<Article> getArticles(){
 		return articles;
 	}
-	
+
 	@Override
 	public Iterator iterator() {
 		// TODO Auto-generated method stub
