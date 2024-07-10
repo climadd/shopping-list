@@ -1,7 +1,5 @@
 package pack;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class CommandLineInterface {
@@ -22,46 +20,35 @@ public class CommandLineInterface {
 		int operation;
 
 		while(true) {
-			/* -Display contents
-			 * -display categories
-			 * -Add new List
-			 * -Remove existing List
-			 * -Add new Category
-			 * -Remove existing Category
-			 * -Add new Article
-			 * -Remove existing Article
-			 * -findByPrefix
-			 * -findByCategory
-			 * -priceOfList
-			 * -Exit
-			 */
-
 			System.out.println("Which operation do you want to perform?\nType the corresponding number:");
 			System.out.println("  0. Display Lists and their Contents");	//fatto
 			System.out.println("  1. Display every Category");	//fatto
 			System.out.println("  2. Add new List");	//fatto
-			System.out.println("  3. Remove existing List");	//sbaglia entra in eccezione anche quando non dovrebbe
+			System.out.println("  3. Remove existing List");	//fatto
 			System.out.println("  4. Add new Category");	//fatto
-			System.out.println("  5. Remove existing Category");	//sbaglia entra in eccezione anche quando non dovrebbe
-			System.out.println("  6. Add new Article");		//gestisci il non categorizzato/valori default
-			System.out.println("  7. Remove existing Article");		//
+			System.out.println("  5. Remove existing Category");	//fatto
+			System.out.println("  6. Add new Article");		//fatto
+			System.out.println("  7. Remove existing Article");		// fatto
 			System.out.println("  8. Find Article by List and Prefix");	//fatto
-			System.out.println("  9. Find Article by Category");	//
+			System.out.println("  9. Find Article by List and Category");	//fatto
 			System.out.println(" 10. Calculate the total price of a List");		//fatto
 			System.out.println(" 11. Exit");
 			operation= scan.nextInt();
 
 			switch (operation) {
+			//Display contents of Lists
 			case 0:
 				System.out.println("Your Lists are: ");
 				manager.displayLists();
 				break;
+				//Display Categories
 			case 1:
 				System.out.println("Your Categories are: ");
 				manager.displayCategories(manager);
 				System.out.println();
 				break;
 			case 2:
+				//Add new List
 				System.out.println("Type the name of the new List: ");
 				try {
 					manager.addShoppingList(scan.next());
@@ -70,16 +57,17 @@ public class CommandLineInterface {
 					System.out.println(dnException.getMessage() + "\n");
 				}
 				break;
+				//Remove existing List
 			case 3:
 				System.out.println("Type the name of the List you're removing:  ");
 				try {
 					manager.removeShoppingList(scan.next());
-					System.out.println("List successfully removed!\n");	//NON FUNZIONA, NON TROVA LA LISTA DALLO STESSO NOME
+					System.out.println("List successfully removed!\n");
 				}catch(MissingNameException mnException) {
 					System.out.println(mnException.getMessage() + "\n");
 				}
-
 				break;
+				//Add new Category
 			case 4:
 				System.out.println("Type the name of the new Category: ");
 				try {
@@ -89,16 +77,19 @@ public class CommandLineInterface {
 					System.out.println(dnException.getMessage() + "\n");
 				}
 				break;
+				//Remove existing Category
 			case 5:
 				System.out.println("Type the name of the Category you're removing: ");
 				try {
-					manager.removeCategory(scan.next());
-					System.out.println("Category successfully removed!\n");		//	NON FUNZIONA, NON TROVA LA LISTA DALLO STESSO NOME
+					String categoryToBeRemoved= scan.next();
+					manager.removeCategory(categoryToBeRemoved);
+					manager.setDefaultCategory(categoryToBeRemoved);
+					System.out.println("Category successfully removed!\n");
 				}catch(MissingNameException mnException) {
 					System.out.println(mnException.getMessage() + "\n");
-				}// TODO: passa ogni lista per settare a default le categorie degli articoli di questa
-
+				}
 				break;
+				//Add new Article
 			case 6:
 				System.out.println("Type a valid List to add the Article in: \n");
 
@@ -111,21 +102,33 @@ public class CommandLineInterface {
 						double newArticleCost = scan.nextDouble();
 						System.out.println("Type the Category of the Article: "); //stringa vuota = elemento nullo x costruttori
 						String newArticleCategory = scan.next();
-						// TODO: controllo che la categoria sia presente
 						System.out.println("Type the Quantity of the Article: "); //stringa vuota = elemento nullo x costruttori
 						int newArticleQuantity = scan.nextInt();
 						shoppingList.addArticle(newArticleName, newArticleCost, newArticleCategory, newArticleQuantity);
+						if (!manager.categoryPresenceCheck(newArticleCategory)) {
+							shoppingList.setDefaultCategory(newArticleCategory);
+						}
 					}
 				}					
-
 				break;
+				//Remove existing Article
 			case 7:
-				//TODO: yet to implement
+				System.out.println("Type the List you want to remove an Article from:");
+				String listForArticleRemoval = scan.next();
+				for(ShoppingList shoppingList : manager.getShoppingLists()) {
+					if(shoppingList.getName().equalsIgnoreCase(listForArticleRemoval)) {
+						System.out.println("Type the Name of the Article to remove:");
+						String articleToBeRemoved = scan.next();
+						System.out.println("Type the Quantity of the Article you want to remove:");
+						shoppingList.removeArticle(articleToBeRemoved, scan.nextInt());
+					}
+				}
 				System.out.println("Article successfully removed!\n");
 				break;
+				//Find Articles by List and Prefix
 			case 8:
 				System.out.println("Type a valid List to find Articles in:");
-				
+				//TRY+CATCH
 				String listToFindPrefixIn = scan.next();
 				System.out.println("Type a prefix:");			
 				String prefix = scan.next();
@@ -137,22 +140,22 @@ public class CommandLineInterface {
 					}
 				}
 				break;
+				//Find Articles by List and Category
 			case 9:
-				// find article by category: make a new ShoppingList named answer where i add every matching article
-				for (ShoppingList shoppingList : manager.getShoppingLists()) {
-					ShoppingList matchingArticleAnswers;
-					ArrayList<Article> articles = shoppingList.getArticles();
-					for (int i = 0; i < articles.size(); i++) {
-						Article current = articles.get(i);
-						System.out.print(current.getName() + " (" + current.getCost() + "€, " + current.getCategory() + ", n°" + current.getQuantity() + ")");
-						if (i < articles.size() - 1) {
-							System.out.print("/ ");
-						}
+				System.out.println("Type a valid List to find Articles in:");
+				//TRY+CATCH
+				String listToFindArticlesByCathegory = scan.next();
+				System.out.println("Type a valid Category:");
+				String categoryToFindArticles = scan.next();
+				for(ShoppingList shoppingList : manager.getShoppingLists()) {
+					if(shoppingList.getName().equalsIgnoreCase(listToFindArticlesByCathegory)){
+						ShoppingList resultsByCategory = new ShoppingList("Results by Category", shoppingList.findByCategory(categoryToFindArticles));
+						resultsByCategory.printList();
+						System.out.println();
 					}
-					System.out.println();
 				}
-				System.out.println();
 				break;
+				//Calculate total price of List
 			case 10:
 				System.out.println("Type a valid List to calculate the price for: \n");
 				String listToPrice = scan.next();
@@ -162,6 +165,7 @@ public class CommandLineInterface {
 					}
 				}
 				break;
+				//Exit
 			case 11:
 				System.out.println("Closing Interface...");
 				scan.close();

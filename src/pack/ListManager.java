@@ -47,10 +47,8 @@ public class ListManager {
 				matchFound = true;
 				iterator.remove();
 			}
-			else {
-				throw new MissingNameException("Shopping List with name " + name + " not present");
-			}
 		}
+		if(!matchFound) throw new MissingNameException("Shopping List with name " + name + " not present");
 	}
 
 	public void addCategory(String category) throws DuplicateNameException {
@@ -64,17 +62,15 @@ public class ListManager {
 	}
 
 	public void removeCategory(String category) throws MissingNameException {
-		Iterator<ShoppingList> iterator = collectionOfShoppingLists.iterator();
+		Iterator<String> iterator = categories.iterator();
 		boolean matchFound = false;
 		while(iterator.hasNext() && !matchFound) {
-			if(iterator.next().getName().equalsIgnoreCase(category)) {
+			if(iterator.next().equalsIgnoreCase(category)) {
 				matchFound = true;
 				iterator.remove();
 			}
-			else {
-				throw new MissingNameException("Category with name " + category + " not present");
-			}
 		}
+		if(!matchFound)	throw new MissingNameException("Category with name " + category + " not present");
 	}
 
 	public void setDefaultCategory(String removedCategory) {	
@@ -84,17 +80,6 @@ public class ListManager {
 
 	}
 
-	//FORSE OPZIONALI PERCHè I CONTROLLI LI FACCIO CON LE ECCEZIONI
-	public boolean listPresenceCheck(String checkedListName) {
-		boolean check = false;
-		Iterator<ShoppingList> iterator = collectionOfShoppingLists.iterator();
-		while(iterator.hasNext() && !check) {
-			if(iterator.next().getName().equalsIgnoreCase(checkedListName)) {
-				check = true;
-			}
-		}
-		return check;	
-	}
 	public boolean categoryPresenceCheck(String checkedCategory) {
 		boolean check = false;
 		for (int i=0; i < categories.size() && !check; i++) {
@@ -105,7 +90,6 @@ public class ListManager {
 		}
 		return check;
 	}
-
 	//getters
 	public ArrayList<ShoppingList> getShoppingLists(){
 		return collectionOfShoppingLists;

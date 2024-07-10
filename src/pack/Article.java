@@ -7,7 +7,7 @@ public class Article {
 	private double cost;
 	private String category;
 	private int quantity;
-	public static final String DEFAULT_CATEGORY = "Non Categorizzato";
+	public static final String DEFAULT_CATEGORY = "Uncategorized";
 
 	//costruttori
 	public Article(String name, double cost, String category, int quantity) {
