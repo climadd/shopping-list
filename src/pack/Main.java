@@ -2,7 +2,15 @@ package pack;
 
 import java.util.Scanner;
 
-//organizzaz directory SRC: main-java-pack<varie classi/test-java<varie classi
+/*TODO:
+ * -organizzazione directory SRC: main-java-pack<varie classi/test-java<varie classi
+ * METODI DI I/O
+ * -GUI
+ * -TEST
+ * -HANDLING EVERY EXCEPTION
+ * -JAVADOC
+*/
+
 public class Main {
 
 	public static void main(String[]Args) throws DuplicateNameException, MissingNameException, ValidationException {

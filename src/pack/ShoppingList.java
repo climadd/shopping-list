@@ -22,7 +22,7 @@ public class ShoppingList implements Iterable{
 	//metodi
 	public void addArticle(String name, double cost, String category, Integer quantity) throws ValidationException {
 		Iterator<Article> iterator = articles.iterator();
-		boolean articleMatch = false;		//flag
+		boolean articleMatch = false;
 		while(iterator.hasNext() && !articleMatch) {
 			Article article = iterator.next();
 			if(article.getName().equalsIgnoreCase(name)) {
