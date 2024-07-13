@@ -9,12 +9,12 @@ import main.java.org.view.GraphicUserInterface;
 public class Controller {
 	
 	//campi
-	private ListManager manager;
 	private GraphicUserInterface gui;
 
 	//costruttore
-	public Controller(ListManager manager, GraphicUserInterface gui) {
-		this.manager = manager;
+	public Controller(GraphicUserInterface gui) {
 		this.gui = gui;
 	}
+	
+	
 }   

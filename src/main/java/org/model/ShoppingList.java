@@ -1,27 +1,48 @@
 package main.java.org.model;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import main.java.org.exceptions.ValidationException;
+/**
+ * the class represent a shopping list as an ArrayList containing articles.
+ */
+public class ShoppingList implements Iterable<Article>{
 
-public class ShoppingList implements Iterable{
-
-	//attributi
 	private String name;
 	private ArrayList<Article> articles;
 
-	//costruttore
+	/**
+	 * Constructs a ShoppingList with name and articles.
+	 * 
+	 * @param name     the name of the shopping list
+	 * @param articles the list of articles
+	 */
 	public ShoppingList(String name, ArrayList<Article> articles) {
 		this.name = name;
 		this.articles = articles;
 	}
+
+	/**
+	* Constructs a ShoppingList with name.
+	* 
+	* @param name the name of the shopping list
+	*/
 	public ShoppingList(String name) {
 		this(name, new ArrayList<Article>());
 	}
-	
-	//metodi
+
+	//methods	
+    /**
+     * Adds an article to the shopping list. If an article with the same name
+     * exists, increments its quantity.
+     * 
+     * @param name     the name of the article
+     * @param cost     the cost of the article
+     * @param category the category of the article
+     * @param quantity the quantity of the article
+     * @variable articleMatch flag to avoid redundant cycling
+     * @throws ValidationException if the quantity is invalid
+     */
 	public void addArticle(String name, double cost, String category, Integer quantity) throws ValidationException {
 		Iterator<Article> iterator = articles.iterator();
 		boolean articleMatch = false;
@@ -47,9 +68,17 @@ public class ShoppingList implements Iterable{
 		}
 	}
 
+    /**
+     * Removes an article from the shopping list or decreases its quantity.
+     * 
+     * @param name     the name of the article
+     * @param quantity the quantity to remove
+     * @variable articleMatch flag to avoid redundant cycling
+     * @throws ValidationException if the quantity is invalid
+     */
 	public void removeArticle(String name, int quantity) throws ValidationException {
 		Iterator<Article> iterator = articles.iterator();
-		boolean articleMatch = false;		//flag
+		boolean articleMatch = false;
 		while(iterator.hasNext() && !articleMatch) {
 			Article article = iterator.next();
 			if(article.getName().equalsIgnoreCase(name)) {
@@ -62,6 +91,9 @@ public class ShoppingList implements Iterable{
 		}	
 	}
 
+    /**
+     * Prints the shopping list.
+     */
 	public void printList() {
 		System.out.print(name + " : ");
 		for (int i = 0; i < articles.size(); i++) {
@@ -73,14 +105,25 @@ public class ShoppingList implements Iterable{
 		}
 	}
 
+    /**
+     * Finds articles by prefix.
+     * 
+     * @param prefix the prefix to search for
+     * @return matchingArticles = ArrayList of articles with names starting with prefix
+     */
 	public ArrayList<Article> findByPrefix(String prefix) {
-		ArrayList<Article> answ = new ArrayList<>();
+		ArrayList<Article> matchingArticles = new ArrayList<>();
 		for(Article next: articles) 
 			if(next.getName().startsWith(prefix))
-				answ.add(next);
-		return answ;		
+				matchingArticles.add(next);
+		return matchingArticles;		
 	}
 
+    /**
+     * Calculates the total price of the shopping list.
+     * 
+     * @return price = the total price of the shopping list
+     */
 	public double priceOfList() {
 		double price = 0;
 		for (Article article : articles) {
@@ -89,6 +132,12 @@ public class ShoppingList implements Iterable{
 		return price;
 	}
 
+    /**
+     * Finds articles by category.
+     * 
+     * @param category the category to search for
+     * @return ArrayList of articles from the specified category
+     */
 	public ArrayList<Article> findByCategory(String category) {
 		ArrayList<Article> articlesByCategory = new ArrayList<>();
 		Iterator<Article> iterator = articles.iterator();
@@ -101,6 +150,13 @@ public class ShoppingList implements Iterable{
 		return articlesByCategory;
 	}	
 
+
+    /**
+     * Sets the default category for articles in the shopping list that match the removed category by invoking 
+     * Article's method .setDefaultCategory()
+     * 
+     * @param removedCategory the category to replace with the default category
+     */
 	public void setDefaultCategory(String removedCategory) {
 		Iterator<Article> iterator = articles.iterator();
 		while(iterator.hasNext()) {
@@ -110,25 +166,28 @@ public class ShoppingList implements Iterable{
 			}
 		}
 	}
-	//metodi I/O
-	public ShoppingList importFromFile(File shoppingListFile) {
-		throw new RuntimeException("TODO da implementare");
-	}
-	public void exportToFile(String shoppingListPath) {
-		throw new RuntimeException("TODO da implementare");
-	}
 
 	//getters
+    /**
+     * Returns the name of articles.
+     * 
+     * @return the name of articles
+     */
 	public String getName() {
 		return name;
 	}
+	
+    /**
+     * Returns the list of articles.
+     * 
+     * @return the list of articles
+     */
 	public ArrayList<Article> getArticles(){
 		return articles;
 	}
 
 	@Override
-	public Iterator iterator() {
-		// TODO Auto-generated method stub
+	public Iterator<Article> iterator() {
 		return articles.iterator();
 	}
 }

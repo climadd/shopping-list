@@ -1,4 +1,4 @@
-package main.java.org.exceptions;
+package main.java.org.model;
 
 public class DuplicateNameException extends Exception{
 

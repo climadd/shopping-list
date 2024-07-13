@@ -3,11 +3,11 @@ package main.java.org.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import main.java.org.exceptions.DuplicateNameException;
-import main.java.org.exceptions.MissingNameException;
-import main.java.org.exceptions.ValidationException;
+import main.java.org.model.DuplicateNameException;
 import main.java.org.model.ListManager;
+import main.java.org.model.MissingNameException;
 import main.java.org.model.ShoppingList;
+import main.java.org.model.ValidationException;
 
 public class CommandLineInterface {
 
@@ -40,7 +40,9 @@ public class CommandLineInterface {
 				System.out.println("  8. Find Article by List and Prefix");	//fatto
 				System.out.println("  9. Find Article by List and Category");	//fatto
 				System.out.println(" 10. Calculate the total price of a List");		//fatto
-				System.out.println(" 11. Exit");
+				System.out.println(" 11. Import List from File");
+				System.out.println(" 12. Export List to File");
+				System.out.println(" 13. Exit");
 
 				operation= scan.nextInt();
 				switch (operation) {
@@ -173,8 +175,16 @@ public class CommandLineInterface {
 						}
 					}
 					break;
-					//Exit
+					//Import from File
 				case 11:
+					System.out.println("Type the path of the file to import");
+					break;
+					//Export to File
+				case 12:
+					System.out.println("Type a valid List to export");
+					break;
+					//Exit
+				case 13:
 					System.out.println("Closing Interface...");
 					scan.close();
 					return;

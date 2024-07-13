@@ -1,8 +1,8 @@
 package test.java.org.modelTest;
 import org.junit.jupiter.api.Test;
 
-import main.java.org.exceptions.ValidationException;
 import main.java.org.model.ShoppingList;
+import main.java.org.model.ValidationException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -2,23 +2,31 @@ package main.java.org.model;
 
 import java.util.Scanner;
 
-import main.java.org.exceptions.DuplicateNameException;
-import main.java.org.exceptions.MissingNameException;
-import main.java.org.exceptions.ValidationException;
+import main.java.org.controller.Controller;
 import main.java.org.view.CommandLineInterface;
 import main.java.org.view.GraphicUserInterface;
 
 /*TODO:
- * -organizzazione directory SRC: main-java-pack<varie classi/test-java<varie classi
- * METODI DI I/O
- * -GUI
- * -TEST
  * -HANDLING EVERY EXCEPTION
- * -JAVADOC
+ * METODI DI I/O
+ * -TEST
+ * * -GUI
 */
 
+/**
+ * Main class of the application. 
+ */
 public class Main {
 
+    /**
+     * The main method is the entry point of the application.
+     * It asks the user to choose between launching the Command Line Interface or the Graphic User Interface through the use of a Scanner.
+     *
+     * @param args command-line arguments (not used).
+     * @throws DuplicateNameException  mostly thrown during creation of new data if the identifier given is already used for pre-existing data.
+     * @throws MissingNameException  mostly thrown when the identifier given isn't present in memory.
+     * @throws ValidationException  mostly thrown when the input given is not valid or coherent with the operation.
+     */
 	public static void main(String[]Args) throws DuplicateNameException, MissingNameException, ValidationException {
 
 		Scanner scan = new Scanner(System.in);
@@ -35,6 +43,7 @@ public class Main {
 		if (answer.equalsIgnoreCase("yes")) {
 			GraphicUserInterface interfaccia = new GraphicUserInterface();
 			interfaccia.runInterface();
+			Controller controller = new Controller(interfaccia);
 		}
 
 		//command line block
