@@ -41,7 +41,6 @@ public class ListManager {
 		System.out.println(manager.getCategories());	
 	} 
 
-
     /**
      * Adds a new shopping list with the specified name.
      * 

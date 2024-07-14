@@ -2,6 +2,9 @@ package main.java.org.view;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+
+import main.java.org.model.ListManager;
+
 import java.awt.*;
 
 public class GraphicUserInterface extends JFrame{
@@ -10,6 +13,7 @@ public class GraphicUserInterface extends JFrame{
 	private JTextField listName;
 	private JButton listAdd;
 	private JButton listRemove;
+	private DefaultListModel<String> listModel;
 	private JList<String> listView;
 
 	//campi Category
@@ -30,6 +34,7 @@ public class GraphicUserInterface extends JFrame{
 	
 	//costruttore
 	public GraphicUserInterface() {	
+		
 	}
 
 	//metodo
@@ -47,7 +52,8 @@ public class GraphicUserInterface extends JFrame{
 		listPanel.add(listName = new JTextField("Name of the List"));
 		listPanel.add(listAdd = new JButton("Add a new List"));
 		listPanel.add(listRemove = new JButton("Remove an existing List"));
-		listPanel.add(listView = new JList<String>());
+		listModel = new DefaultListModel<>();
+		listPanel.add(listView = new JList<String>(listModel));
 		
 		//Category Column
 		JPanel categoryPanel = new JPanel();
@@ -83,5 +89,12 @@ public class GraphicUserInterface extends JFrame{
 
 	public JButton getListAddButton() {
 		return listAdd;
+	}
+	
+	public JButton getListRemoveButton() {
+		return listRemove;
+	}
+	public DefaultListModel<String> getListModel(){
+		return listModel;
 	}
 }

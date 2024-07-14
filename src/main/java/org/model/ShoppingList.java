@@ -70,7 +70,7 @@ public class ShoppingList implements Iterable<Article>{
 	}
 
     /**
-     * Removes an article from the shopping list or decreases its quantity.
+     * Removes an article from the shopping list or decreases its quantity based on the quantity parameter.
      * 
      * @param name     the name of the article
      * @param quantity the quantity to remove
