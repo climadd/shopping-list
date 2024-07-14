@@ -146,6 +146,7 @@ public class ListManager {
 	public ShoppingList importFromFile(File shoppingListFile) {
 		throw new RuntimeException("TODO da implementare");
 	}
+	
 	public void exportToFile(String shoppingListPath) {
 		throw new RuntimeException("TODO da implementare");
 	}

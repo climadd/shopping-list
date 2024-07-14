@@ -48,8 +48,6 @@ public class GraphicUserInterface extends JFrame{
 		listPanel.add(listAdd = new JButton("Add a new List"));
 		listPanel.add(listRemove = new JButton("Remove an existing List"));
 		listPanel.add(listView = new JList<String>());
-
-		
 		
 		//Category Column
 		JPanel categoryPanel = new JPanel();
@@ -59,8 +57,6 @@ public class GraphicUserInterface extends JFrame{
 		categoryPanel.add(categoryAdd = new JButton("Add a new Category"));
 		categoryPanel.add(categoryRemove = new JButton("Remove an existing Category"));
 		categoryPanel.add(categoryView = new JList<String>());
-
-		
 
 		//Article Column
 		JPanel articlePanel = new JPanel();
@@ -74,16 +70,11 @@ public class GraphicUserInterface extends JFrame{
 		articlePanel.add(articleRemove = new JButton("Remove an existing Article"));
 		articlePanel.add(articleView = new JList<String>());
 
-
-
-
-
 		add(listPanel, BorderLayout.WEST);
 		add(categoryPanel, BorderLayout.CENTER);
 		add(articlePanel, BorderLayout.EAST);
 		setVisible(true);
 	}
-
 
 	// Getters
 	public String getListName() {

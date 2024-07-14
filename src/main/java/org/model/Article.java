@@ -2,9 +2,10 @@ package main.java.org.model;
 
 /**
  * The class represents an article with a name, cost, category, and quantity.
+ * The "name" attribute is the identifier of the Article object within the same ShoppingList object.
  */
 public class Article {
-	
+		
 	private String name;
 	private double cost;
 	private String category;

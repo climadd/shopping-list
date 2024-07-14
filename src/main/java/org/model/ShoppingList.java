@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 /**
  * the class represent a shopping list as an ArrayList containing articles.
+ * The "name" attribute is the identifier of a ShoppingList object within the same ListManager object.
  */
 public class ShoppingList implements Iterable<Article>{
 
@@ -33,8 +34,8 @@ public class ShoppingList implements Iterable<Article>{
 
 	//methods	
     /**
-     * Adds an article to the shopping list. If an article with the same name
-     * exists, increments its quantity.
+     * Adds an article to the shopping list. 
+     * If an article with the same name already exists, increments its quantity.
      * 
      * @param name     the name of the article
      * @param cost     the cost of the article
