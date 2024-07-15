@@ -141,6 +141,7 @@ public class ListManager {
 		}
 		return check;	
 	}
+	
 	//metodi I/O
 	public ShoppingList importFromFile(File shoppingListFile) {
 		throw new RuntimeException("TODO da implementare");

@@ -9,8 +9,13 @@ import java.awt.*;
 
 @SuppressWarnings({ "unused", "serial" })
 
-
-
+/**
+ * 		NOTE: UNFINISHED: i've been having issues with the ActionListeners and Events handling on this GUI, 
+ * 				it is possible to launch it but, due to the Controller class being unfinished interactions are yet to be implemented.
+ * 
+ *GraphicUserInterface is a graphic based interface that offers the same functionalities of Shopping List handling from the command
+ *line interface. It is split into 3 columns: List-based functionalities, Category-based ones and Article-based ones.
+ */
 public class GraphicUserInterface extends JFrame{
 
 	//campi List
