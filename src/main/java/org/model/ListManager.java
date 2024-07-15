@@ -11,7 +11,7 @@ public class ListManager {
 
 	private ArrayList<ShoppingList> collectionOfShoppingLists;
 	private ArrayList<String> categories;
-
+	public static String PATH = ".."; //parent dirtectory
 	/**
 	 * Constructs a new ListManager with empty lists of shopping lists and categories.
 	 */
@@ -143,7 +143,7 @@ public class ListManager {
 	}
 	
 	//metodi I/O
-	public ShoppingList importFromFile(File shoppingListFile) {
+	public ShoppingList importFromFile(File shoppingListFromFile) throws ValidationException {
 		throw new RuntimeException("TODO da implementare");
 	}
 

@@ -293,14 +293,13 @@ public class CommandLineInterface {
 	 * TODO: yet to implement
 	 */
 	public void importFromFile() {
-		System.out.println("Type the path of the file to import");
+
 	}
 
 	/**
 	 * TODO: yet to implement
 	 */
 	public void exportToFile() {
-		System.out.println("Type a valid List to export");
 
 	}
 
