@@ -7,6 +7,10 @@ import main.java.org.model.ListManager;
 
 import java.awt.*;
 
+@SuppressWarnings({ "unused", "serial" })
+
+
+
 public class GraphicUserInterface extends JFrame{
 
 	//campi List

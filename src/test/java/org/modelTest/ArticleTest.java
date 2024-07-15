@@ -14,15 +14,15 @@ public class ArticleTest {
 		Article article = new Article("latte", 2);
 		assertEquals("Uncategorized", article.getCategory());
 		assertEquals(1, article.getQuantity());
-		
+
 		Article article2 = new Article("latte", 1.7,"alimentari");
 		assertNotEquals("Uncategorized", article2.getCategory());
 		assertEquals(1, article2.getQuantity());
-		
+
 		Article article3 = new Article("latte", 1.7, 3);
 		assertEquals("Uncategorized", article3.getCategory());
 		assertNotEquals(3, article2.getQuantity());
-		
+
 		//testing whether exception is thrown or nor
 		assertDoesNotThrow(() -> {
 			@SuppressWarnings("unused")
@@ -31,10 +31,10 @@ public class ArticleTest {
 		assertThrows(ValidationException.class, () -> {
 			@SuppressWarnings("unused")
 			Article article5 = new Article("latte", 2, "cibo", -4);
-			
+
 		});
 	}
-	
+
 	@Test
 	void testAddQuantity() throws ValidationException {
 		// Initialize the article
@@ -53,7 +53,7 @@ public class ArticleTest {
 		assertDoesNotThrow(() -> {
 			article.addQuantity(1);
 		});
-	
+
 	}
 
 
@@ -61,28 +61,28 @@ public class ArticleTest {
 	public void subtractQuantity() throws ValidationException {
 		// Initialize the article
 		Article article = new Article("latte", 1.7, "alimentari", 4);
-		
+
 		// Test removing negative quantity - should be throwing ValidationException
 		assertThrows(ValidationException.class, () -> {
 			article.addQuantity(-2);
 		});
-		
+
 		// Test removing positive quantity
 		article.subtractQuantity(3);
 		assertEquals(1, article.getQuantity());
-		
+
 		// Verify no exception is thrown for valid quantity addition
 		assertDoesNotThrow(() -> {
 			article.subtractQuantity(1);
 		});
-		
+
 	}
-	
+
 	@Test
 	public void setDefaultCategory() throws ValidationException {
 		// Initialize the article
 		Article article = new Article("latte", 1.7, "alimentari", 4);
-		
+
 		// Verify method
 		article.setDefaultCategory();
 		assertEquals("Uncategorized", article.getCategory());

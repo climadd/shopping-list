@@ -1,4 +1,4 @@
-package main.java.org.model;
+package main.java.org;
 
 import java.util.Scanner;
 
@@ -11,19 +11,19 @@ import main.java.org.view.GraphicUserInterface;
  * METODI DI I/O
  * -TEST
  * * -GUI
-*/
+ */
 
 /**
  * Main class of the application. 
  */
 public class Main {
 
-    /**
-     * The main method is the entry point of the application.
-     * It asks the user to choose between launching the Command Line Interface or the Graphic User Interface through the use of a Scanner.
-     * 
-     * @author Lorenzo Bertoldo
-     */
+	/**
+	 * The main method is the entry point of the application.
+	 * It asks the user to choose between launching the Command Line Interface or the Graphic User Interface through the use of a Scanner.
+	 * 
+	 * @author Lorenzo Bertoldo
+	 */
 	public static void main(String[]Args) {
 
 		Scanner scan = new Scanner(System.in);

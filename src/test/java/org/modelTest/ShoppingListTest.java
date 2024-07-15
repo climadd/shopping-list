@@ -9,7 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ShoppingListTest {
 
 	private ShoppingList list = new ShoppingList("testList");
-
+	
+	@Test
+	public void constructorTest() {
+		assertEquals("testList", list.getName());
+	}
+	
 	@Test
 	public void addArticle() throws ValidationException {
 
@@ -36,7 +41,6 @@ public class ShoppingListTest {
 		//testing 'articleMatch = false' branch of method
 		list.addArticle("bottoni", 1.7, "", 5);
 		assertEquals("bottoni",list.getArticles().get(1).getName());
-
 	}
 
 	@Test
@@ -73,7 +77,6 @@ public class ShoppingListTest {
 		assertEquals(2,list.findByPrefix("pesc").size());
 		assertEquals(0,list.findByPrefix("carne").size());
 		assertEquals(1,list.findByPrefix("pesci").size());
-
 	}
 
 	@Test
@@ -81,39 +84,37 @@ public class ShoppingListTest {
 		list.addArticle("latte", 44, "", 1);
 		list.addArticle("pesce", 11, "", 3);
 		list.addArticle("pesciolini", 10.60, "", null);
-		
+
 		//funzionamento somma prezzi
-		assertEquals(87.60, list.priceOfList());
-		
+		assertEquals(87.60, list.priceOfList());	
 	}
 
 	@Test
 	public void findByCategory() throws ValidationException {
-		
+
 		list.addArticle("latte", 44, "latticini", 1);
 		list.addArticle("pesce", 11, "", 3);
 		list.addArticle("pesciolini", 10.60, "", null);
-		
+
 		//funzionamento hit e non hit
 		assertEquals(2, list.findByCategory("Uncategorized").size());
 		assertEquals(0, list.findByCategory("Frutta").size());
-		
+
 		//funzionamento Case-Sensitive
 		list.addArticle("brie", 44, "LATTICINI", 1);
 		assertEquals(2, list.findByCategory("latticini").size());
-
 	}
 
 	@Test
 	public void setDefaultCategory() throws ValidationException {
-		
+
 		list.addArticle("latte", 44, "latticini", 1);
 		list.addArticle("pesce", 11, "DaComprareAllaCOOP", 3);
 		list.addArticle("pesciolini", 10.60, "DaComprareAllaCOOP", null);
 		list.addArticle("brie", 44, "LATTICIONI", 1);
-		
+
 		list.setDefaultCategory("DaComprareAllaCOOP");
-		
+
 		//checking if only correct entries got set to default
 		assertNotEquals("Uncategorized", list.getArticles().get(0).getCategory());	// not equals
 		assertEquals("Uncategorized", list.getArticles().get(1).getCategory());

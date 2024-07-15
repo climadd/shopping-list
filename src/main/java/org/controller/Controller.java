@@ -11,7 +11,10 @@ import main.java.org.model.MissingNameException;
 import main.java.org.model.ShoppingList;
 import main.java.org.view.GraphicUserInterface;
 
-//TODO: J
+@SuppressWarnings({ "unused" })
+
+
+
 public class Controller {
 
 	//campi

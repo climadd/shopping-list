@@ -213,7 +213,7 @@ public class CommandLineInterface {
 					System.out.println(mnException.getMessage() + "\n");
 				}
 			}
-		}	
+		}
 	}
 
 	/**
