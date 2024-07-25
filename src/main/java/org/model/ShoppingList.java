@@ -184,7 +184,9 @@ public class ShoppingList implements Iterable<Article>{
 	 * @throws IOException if an I/O error occurs during file creation or writing
 	 */
 	public void exportToFile(String shoppingListPath) throws IOException{
+		//printing current directory just for testing
 		System.out.println(System.getProperty("user.dir"));
+		
 		File file = new File(ShoppingList.PATH + "\\" + this.getName() + ".txt");
 		file.delete();
 		file.createNewFile();
@@ -192,7 +194,7 @@ public class ShoppingList implements Iterable<Article>{
 		FileWriter writer = new FileWriter(file);
 		Iterator<Article> iterator = this.iterator();
 		while(iterator.hasNext()) {
-			writer.write(iterator.next().getName() + ", ");
+			writer.write(" " + iterator.next().getName() + ",");
 		}
 		writer.write("\n");
 		writer.close();

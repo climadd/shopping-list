@@ -30,9 +30,23 @@ public class Main {
 
 		//GUI block
 		if (answer.equalsIgnoreCase("yes")) {
-			GraphicUserInterface interfaccia = new GraphicUserInterface();
-			Controller controller = new Controller(interfaccia);
-			controller.runInterface();
+			//ADDED PRECIOUS ADVICE UNTIL GUI IS COMPLETE AND RUNNING
+			System.out.println("GUI, may not be finished yet, the author highly advise you to use the Command Line Interface instead.");
+			while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) {
+				System.out.println("Proceed anyway? (yes = gui / no = take me to the command line");
+				answer = scan.next();
+			}
+			if(answer.equalsIgnoreCase("yes")){
+				GraphicUserInterface interfaccia = new GraphicUserInterface();
+				Controller controller = new Controller(interfaccia);
+				controller.runInterface();
+			}
+			if (answer.equalsIgnoreCase("no")) {
+				CommandLineInterface interfaccia = new CommandLineInterface(scan);
+				interfaccia.executeInterface();
+			}
+
+			scan.close();
 		}
 
 		//command line block
