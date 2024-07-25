@@ -6,13 +6,6 @@ import main.java.org.controller.Controller;
 import main.java.org.view.CommandLineInterface;
 import main.java.org.view.GraphicUserInterface;
 
-/*TODO:
- * -HANDLING EVERY EXCEPTION
- * METODI DI I/O
- * -TEST
- * * -GUI
- */
-
 /**
  * Main class of the application. 
  */

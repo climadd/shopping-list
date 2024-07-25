@@ -1,5 +1,8 @@
 package main.java.org.model;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -11,6 +14,7 @@ public class ShoppingList implements Iterable<Article>{
 
 	private String name;
 	private ArrayList<Article> articles;
+	public static String PATH = "C:\\Users\\loren\\eclipse-workspace\\shopping-list\\src\\main\\java\\org\\files";
 
 	/**
 	 * Constructs a ShoppingList with name and articles.
@@ -166,6 +170,32 @@ public class ShoppingList implements Iterable<Article>{
 				article.setDefaultCategory();
 			}
 		}
+	}
+
+	/**
+	 * Exports the shopping list to a file.
+	 * 
+	 * The method creates a new text file with the name of the shopping list in the specified path 
+	 * (IT'S ABSOLUTE, NEED TO CONVERT TO RELATIVE).
+	 * If a file with the same name already exists, it will be deleted and replaced with a new one.
+	 * The method writes the names of all articles in the shopping list to the file, separated by commas.
+	 *
+	 * @param shoppingListPath the path where the shopping list file will be created
+	 * @throws IOException if an I/O error occurs during file creation or writing
+	 */
+	public void exportToFile(String shoppingListPath) throws IOException{
+		System.out.println(System.getProperty("user.dir"));
+		File file = new File(ShoppingList.PATH + "\\" + this.getName() + ".txt");
+		file.delete();
+		file.createNewFile();
+
+		FileWriter writer = new FileWriter(file);
+		Iterator<Article> iterator = this.iterator();
+		while(iterator.hasNext()) {
+			writer.write(iterator.next().getName() + ", ");
+		}
+		writer.write("\n");
+		writer.close();
 	}
 
 	//getters

@@ -1,8 +1,10 @@
 package main.java.org.model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * ListManager is a collection of shopping lists and a collection of categories, both are represented by ArrayLists.
@@ -11,7 +13,7 @@ public class ListManager {
 
 	private ArrayList<ShoppingList> collectionOfShoppingLists;
 	private ArrayList<String> categories;
-	public static String PATH = ".."; //parent dirtectory
+
 	/**
 	 * Constructs a new ListManager with empty lists of shopping lists and categories.
 	 */
@@ -142,13 +144,39 @@ public class ListManager {
 		return check;	
 	}
 	
-	//metodi I/O
-	public ShoppingList importFromFile(File shoppingListFromFile) throws ValidationException {
-		throw new RuntimeException("TODO da implementare");
-	}
+	/** 
+	 * Imports a shopping list from a file. TODO: needs some refactoring, but it works
+	 * 
+	 * Searches for a file with the specified name within the directory specified by {@code ShoppingList.PATH}. 
+	 * If a matching file is found, it creates a new ShoppingList object with the name of the file , adds it to
+	 * the collection of shopping lists, and populates it with articles read from the file. The
+	 * articles are assumed to be separated by a comma and a space in the file.
+	 *
+	 * @param shoppingListFromFile the name of the shopping list file (without the ".txt" extension)
+	 *                             to import from
+	 * @throws FileNotFoundException if no matching file is found in the directory
+	 * @throws ValidationException   if there is an issue with validating the contents of the file
+	 */
+	public void importFromFile(String shoppingListFromFile) throws FileNotFoundException, ValidationException {
 
-	public void exportToFile(String shoppingListPath) {
-		throw new RuntimeException("TODO da implementare");
+		File directory = new File(ShoppingList.PATH);
+		boolean matchFound = false;
+		for(File file : directory.listFiles()) {
+			if(file.getName().equalsIgnoreCase(shoppingListFromFile+".txt")) {
+				matchFound = true;
+				ShoppingList importedShoppingList = new ShoppingList(shoppingListFromFile);
+				collectionOfShoppingLists.add(importedShoppingList);
+				
+				Scanner scan = new Scanner(file);
+				scan.useDelimiter(", ");
+				while (scan.hasNext()) {
+					String article = scan.next();
+					importedShoppingList.addArticle(article, 1, "Uncategorized", 1);
+				}
+				scan.close();
+			}
+		}
+		if(!matchFound) throw new FileNotFoundException("File Not Found!");
 	}
 
 	//getters

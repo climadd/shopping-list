@@ -1,5 +1,7 @@
 package main.java.org.view;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -53,8 +55,8 @@ public class CommandLineInterface {
 				System.out.println("  8. Find Article by List and Prefix");	//fatto
 				System.out.println("  9. Find Article by List and Category");	//fatto
 				System.out.println(" 10. Calculate the total price of a List");		//fatto
-				System.out.println(" 11. Import List from File");
-				System.out.println(" 12. Export List to File");
+				System.out.println(" 11. Import List from File"); //fatto
+				System.out.println(" 12. Export List to File");	//fatto
 				System.out.println(" 13. Exit"); //fatto
 
 				operation= scan.nextInt();
@@ -290,17 +292,40 @@ public class CommandLineInterface {
 	}
 
 	/**
-	 * TODO: yet to implement
+	 * TODO: it works, needs some refactoring still
+	 * 
+	 * Creates an Object ShoppingList and its contained Articles by taking the data from a .txt file
 	 */
 	public void importFromFile() {
-
+		System.out.println("Type the name of the File you want to Import: ");
+		String fileToImport = scan.next();
+		try {
+			manager.importFromFile(fileToImport);
+			System.out.println("List Imported successfully\n");
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage() + "\n");
+		} catch (ValidationException vException) {
+			System.out.println(vException.getMessage() + "\n");
+		}
 	}
 
 	/**
-	 * TODO: yet to implement
+	 * Creates a file .txt named after a list and writes its contents on it
+	 * @throws IOException 
 	 */
-	public void exportToFile() {
-
+	public void exportToFile()  {
+		System.out.println("Type a valid List to Export: ");
+		String listToExport = scan.next();
+		for(ShoppingList shoppingList : manager.getShoppingLists()) {
+			if(shoppingList.getName().equalsIgnoreCase(listToExport)) {
+				try {
+					shoppingList.exportToFile(listToExport);
+					System.out.println("List successfully Exported to file\n");
+				} catch (IOException e) {
+					System.out.println("I/O Exception!");
+				}
+			}
+		}
 	}
 
 	/**
