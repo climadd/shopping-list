@@ -8,7 +8,7 @@ It allows users to categorize items, track costs, and save/load lists for future
 
 ## Installation
 
-This project was developed using Java 17, but it should run on any modern Java version. Before running the project, ensure that Java is installed on your system. You can follow this installation guide to set it up.
+This project was developed using Java 17, but it should run on any modern Java version. Before running the project, ensure that Java is installed on your system. You can follow this [installation guide](https://www.java.com/en/download/help/download_options.html) to set it up.
 
 ### Setup Instructions:
 - **Verify Java Installation**: Run `java -version` in the terminal to confirm Java is installed.
