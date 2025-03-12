@@ -29,18 +29,20 @@ public class Main {
 		}
 
 		//GUI block
-		if (answer.equalsIgnoreCase("yes")) {
-			//ADDED PRECIOUS ADVICE UNTIL GUI IS COMPLETE AND RUNNING
-			System.out.println("GUI, may not be finished yet, the author highly advise you to use the Command Line Interface instead.");
-			while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) {
-				System.out.println("Proceed anyway? (yes = gui / no = take me to the command line");
+		if(answer.equalsIgnoreCase("yes")) {
+			//ADDED PRECIOUS ADVICE UNTIL GUI IS COMPLETE AND RUNNING			
+			while (!answer.equalsIgnoreCase("no")) {
+				System.out.println("GUI, may not be finished yet, the author highly advise you to use the Command Line Interface instead.\nProceed anyway? (yes = gui / no = take me to the command line");
 				answer = scan.next();
 			}
-			if(answer.equalsIgnoreCase("yes")){
+			
+			//this will be the answer.equalsIgnoreCase("yes") portion of the code
+			if(answer.equalsIgnoreCase("AssolutamenteSì")){
 				GraphicUserInterface interfaccia = new GraphicUserInterface();
 				Controller controller = new Controller(interfaccia);
 				controller.runInterface();
 			}
+
 			if (answer.equalsIgnoreCase("no")) {
 				CommandLineInterface interfaccia = new CommandLineInterface(scan);
 				interfaccia.executeInterface();
