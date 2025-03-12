@@ -145,7 +145,7 @@ public class ListManager {
 	}
 	
 	/** 
-	 * Imports a shopping list from a file. TODO: needs some refactoring, but it works
+	 * Imports a shopping list from a file. todo: needs some refactoring, but it works
 	 * 
 	 * Searches for a file with the specified name within the directory specified by {@code ShoppingList.PATH}. 
 	 * If a matching file is found, it creates a new ShoppingList object with the name of the file , adds it to

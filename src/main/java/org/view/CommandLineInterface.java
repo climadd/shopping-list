@@ -292,7 +292,7 @@ public class CommandLineInterface {
 	}
 
 	/**
-	 * TODO: it works, needs some refactoring still
+	 * todo: it works, needs some refactoring still
 	 * 
 	 * Creates an Object ShoppingList and its contained Articles by taking the data from a .txt file
 	 */
